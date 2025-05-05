@@ -34,11 +34,11 @@ resposta = input("Ou Digite qualquer tecla para finalizar a compra.\n")
 
 match resposta:
     case 1:
-        pass
-        ## basicamente vai adicionar um cupom e ganhar um desconto
+        cupom = input("Adicione o seu cupom")
     case 2:
         pass
         ## permite remover algum item da lista
+        ## aaaaaaaaaaaaaaaa
     case 3:
         pass
         ## irá cancelar a compra
