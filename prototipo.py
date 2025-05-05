@@ -17,7 +17,7 @@ while(ativo == True):
             ativo = False
 
 for produto, quantidade, preco in zip(produtos, quantidades, precos):
-    print(f"{produto} [{quantidade} unidade(s)]: R$ {preco:.2f}")
+    print(f"{produto} [{quantidade} unidade(s)]: R$ {preco:.8f}")
 total = 0
 for preco in precos:
     total += preco
@@ -33,13 +33,13 @@ resposta = input("Ou Digite qualquer tecla para finalizar a compra.\n")
 
 
 match resposta:
-    case 1:
+    case '1':
         cupom = input("Adicione o seu cupom")
-    case 2:
+    case '2':
         pass
         ## permite remover algum item da lista
         ## aaaaaaaaaaaaaaaa
-    case 3:
+    case '3':
         pass
         ## irá cancelar a compra
     case _:
