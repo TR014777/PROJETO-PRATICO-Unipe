@@ -26,6 +26,16 @@ def registrar_mercadorias():
                 ativo = False
                 mostrar_lista()
 
+def remover_lista():
+    item_desejado = input("Qual produto você deseja remover?")
+
+    indice = produtos.index(item_desejado)
+
+    produtos.pop(indice)
+    quantidades.pop(indice)
+    precos.pop(indice)
+    mostrar_lista()
+
 def calcular_desconto():
     desconto_total = 0
     for cupom in cupons_ativados:
@@ -36,8 +46,9 @@ def metodo_de_pagamento():
     print("\nQual metodo de pagamento deseja utilizar?")
     print("1. Cartão Débito ou Crédito.")
     print("2. Pagamento por Pix.")
-    print("3. Pagamento com dinheiro.\n")
-    resposta = input("\n")
+    print("3. Pagamento com dinheiro.")
+    print("4. Digite 'voltar' caso não queira pagar agora.\n")
+    resposta = input()
 
     match resposta:
         case '1':
@@ -66,17 +77,28 @@ def metodo_de_pagamento():
                                     conclusao = input("\nSuas credenciais estão corretas, deseja concluir a compra? Digite s para sim e n para não.\n")
                                     match conclusao:
                                         case 's':
-                                            print("\nSua compra foi concluída! Muito obrigado por comprar conosco!")
+                                            print("\nSua compra foi realizada com sucesso! Muito obrigado por comprar conosco!")
                                             break
-                                        case 'n':
-                                            break ## ainda não sei o que pôr aqui.
+                                        case '_':
+                                            break
                                     if ano == 2025 and mes < 6:
-                                        print("\nO seu cartão está vencido.")
-                                        break
+                                        print("\nO seu cartão está vencido.\n")
+                                        metodo_de_pagamento()
                                 print("\nO número do cartão é inválido.")
                             except ValueError:
-                                print("\nNão foi digitado um número.")
-
+                                print("\nNão foi digitado um número.\n")
+                                metodo_de_pagamento()
+        case '2':
+            pix = input('\nDeseja utilizar Pix como seu método de pagamento? Digite S para sim e N para não.\n')
+            match pix:
+                case 's':
+                    input("\nCopie e cole o link a seguir e finalize a compra: 00020101021126580014br.gov.bcb.pix01366b506d59-4899-404b-a741-cca75b367e935204000053039865802BR5918ANDRE L M OLIVEIRA6011JOAO PESSOA62070503***63048B14\n")
+                    print("Sua compra foi realizada com sucesso! Muito obrigado por comprar conosco!")
+                case 'n':
+                    metodo_de_pagamento()
+        case 'voltar':
+            mostrar_lista()
+   
 def mostrar_lista():
     for produto, quantidade, preco in zip(produtos, quantidades, precos):
         print(f"{produto} [{quantidade} unidade(s)]: R$ {preco:.2f}")
@@ -97,7 +119,7 @@ def mostrar_opcoes():
     print("2. Adicionar mais um item à lista")
     print("3. Remover item da lista")
     print("4. Prosseguir com o pagamento.")
-    print("5. Cancelar a compra\n")
+    print("5. Cancelar a compra.\n")
     resposta = input("Ou Digite qualquer tecla para finalizar a compra.\n")
 
     match resposta:
@@ -106,9 +128,7 @@ def mostrar_opcoes():
         case '2':
             registrar_mercadorias()
         case '3':
-            pass
-            ## permite remover algum item da lista
-            ## aaaaaaaaaaaaaaaa
+            remover_lista()
         case '4':
             metodo_de_pagamento()
         case '5':
