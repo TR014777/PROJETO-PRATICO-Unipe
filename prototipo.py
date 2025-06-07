@@ -88,7 +88,7 @@ def metodo_de_pagamento():
 
             match cartao:
                 case '1' | '2':
-                    ## amarzenar as credencias do cartão
+                    ## armazenar as credenciais do cartão
                     print("\nNos informe o número de seu cartão. Não deve conter os espaçamentos entre os números.\n")
                     ativo = True
                     while ativo == True:
