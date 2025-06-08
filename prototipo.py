@@ -19,13 +19,21 @@ def registrar_mercadorias():
         produto = input("Digite qual é o produto(exemplo: Miojo, Pasta de Dente):\n")
         while True:
             try:
-                preco = float(input("Digite o preço do produto(exemplo: 3, 5.90, 12.34):\n"))
+                while True:
+                    preco = float(input("Digite o preço do produto(exemplo: 3, 5.90, 12.34):\n"))
+                    if preco >= 0:
+                        break
+                    print("Preço inválido.")
                 break
             except ValueError:
                 print("Valor inválido.")
         while True:
             try:
-                quantidade = int(input("Digite quantas unidades:\n"))
+                while True:
+                    quantidade = int(input("Digite quantas unidades:\n"))
+                    if quantidade >= 1:
+                        break
+                    print("Quantidade inválida.")
                 break
             except ValueError:
                 print("Valor inválido.")
