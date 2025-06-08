@@ -272,7 +272,8 @@ def mostrar_opcoes():
 ## função para adicionar o cupom de desconto a compra
 def adicionar_cupom():
     cupom = input("Adicione o seu cupom:\n")
-    total = sum(precos)
+    desconto_total, _ = calcular_total_com_desconto()
+    total = desconto_total
 
     # verifica se o cupom está disponível e ainda não foi utilizado
     if cupom in cupons_disponiveis and cupom not in cupons_ativados:
