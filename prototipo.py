@@ -131,12 +131,12 @@ def metodo_de_pagamento():
                                 metodo_de_pagamento()
         case '2':
             ## caso escolha o pix
-            pix = input('\nDeseja utilizar Pix como seu método de pagamento? Digite S para sim e N para não.\n')
+            pix = input('\nDeseja utilizar Pix como seu método de pagamento? Digite N para não ou digite qualquer tecla para confirmar.\n')
             match pix:
-                case 's':
+                case '_':
                     input("\nCopie e cole o link a seguir e finalize a compra:\n00020126360014BR.GOV.BCB.PIX0114+551199999999520400005303986540510.005802BR5911FULANO DE TAL6009SAO PAULO62140510TESTE1234566304ABCD\n")
                     print("Sua compra foi realizada com sucesso! Muito obrigado por comprar conosco!")
-                case 'n':
+                case 'n' | 'N':
                     metodo_de_pagamento()
         case '3':
             ## caso escolha em dinheiro
