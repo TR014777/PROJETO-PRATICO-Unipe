@@ -274,10 +274,11 @@ def adicionar_cupom():
     cupom = input("Adicione o seu cupom:\n")
     total = sum(precos)
 
-    ## o cupom só poderá ser usado se ele não tiver sido usado e ativado
+    # verifica se o cupom está disponível e ainda não foi utilizado
     if cupom in cupons_disponiveis and cupom not in cupons_ativados:
+        # obtém o valor de desconto correspondente ao cupom
         desconto = cupons_disponiveis[cupom]
-        ## caso o cupom exceder o valor do produto, ele não poderá ser usado
+        # verifica se o desconto não excede o valor total da compra
         if desconto >= total:
             print(f"O cupom {cupom} não pode ser aplicado. O desconto excede o valor da compra.")
         else:
@@ -285,7 +286,9 @@ def adicionar_cupom():
             print(f"O cupom {cupom} foi adicionado! Desconto de R${desconto:.2f}.")
     else:
         print(f"O cupom {cupom} é inválido ou já foi usado.")
+    
     mostrar_lista()
+
 
 if __name__ == "__main__":
     registrar_mercadorias()
